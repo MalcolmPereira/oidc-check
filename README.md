@@ -199,7 +199,8 @@ The oidc-check application is a Java 17 based SpringBoot application made up of 
 
    ![OIDC Configuration 1](./readme_assets/oidc_config_1.png)
 
-   The redirect-url must me configured on the IPD provider, please replace the {registrationid} variable with the id of the confogired Identity Provider.
+  
+ The redirect-url must me configured on the IPD provider, please replace the {registrationid} variable with the id of the confogired Identity Provider.
 
    ![OIDC Configuration 2](./readme_assets/oidc_config_2.png)
 
@@ -218,7 +219,7 @@ The oidc-check application is a Java 17 based SpringBoot application made up of 
 
 The above application run consisted of multiple IDP configurations in the application.yaml file, one can add new ones as needed to the application.yaml by updating as follows
 
-![OIDC Run 3](./readme_assets/oidc_config_3.png)
+![OIDC Config 3](./readme_assets/oidc_config_3.png)
 
 Keep the IDP ID for Registration, Provider and IDP Name the same, this is very important, then configure other settings for the IDP and you are good to go, you will need to read over the documentation for the IDP to understand the configurations required for the client application registration, they are mostly consistent but sometimes subtle differences may occur. 
 
