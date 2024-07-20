@@ -99,10 +99,6 @@ OIDC is used for user authentication. It provides a way to verify user's identit
     During authentication, clients can request specific scopes to obtain more information about the user e.g., openid, profile, email.
 
 
-- Relying Party
-
-  The application that is requesting user information that initiates the OIDC flow is called Relying Party.
-
 OpenID Connect is built on top of OAuth 2.0. While OAuth 2.0 handles authorization granting third-party applications access to resources, OpenID Connect handles authentication verifying user identity. OIDC uses OAuth 2.0's authorization capabilities to provide an authentication layer, allowing clients to securely obtain information about the user.
 
 ### Open ID Connect Flows
@@ -215,7 +211,7 @@ The oidc-check application is a Java 17 based SpringBoot application made up of 
     ![OIDC Run 2](./readme_assets/oidc_run_2.png)
 
 
-5. List attributes that come back from the OIDC Provider including access tokens and refresh tokens.
+5. Attributes that come back from the OIDC Provider including access tokens and refresh tokens are displayed.
    ![OIDC Run 3](./readme_assets/oidc_run_3.png)
 
 The above application run consisted of multiple IDP configurations in the application.yaml file, one can add new ones as needed to the application.yaml by updating as follows
