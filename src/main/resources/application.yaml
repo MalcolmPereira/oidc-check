@@ -1,0 +1,91 @@
+#file: noinspection SpellCheckingInspection
+#Very Important to adhere to YAML form and not break the YML file, best to edit this in an editor that supports YAML editting.
+server:
+  port: 8080 # Configure Port as needed default is 8080
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google: # Register a new IDP Registration, need to use the same name for Registration and Provider Example Google
+            idp-Name: google # This is not a Spring OAuth2 value however required to dynamically look up the client in the application, must match registration.
+            client-name: Google # Some client name depending on the IDP this may need to match or not match IDP configuration
+            client-id: <some-client-id> # Client Id registered with the IDP
+            client-secret: <some-secret-id> # Client Secret registered with the IDP
+            redirect-uri: http://localhost:${server.port}/login/oauth2/code/{registrationId}
+            scope: openid,profile,email,offline_access # Add additional scopes as needed
+          azure: # Register a new IDP Registration, need to use the same name for Registration and Provider Example Azure
+            idp-Name: azure # This is not a Spring OAuth2 value however required to dynamically look up the client in the application, must match registration.
+            client-name: Azure # Some client name depending on the IDP this may need to match or not match IDP configuration
+            client-id: <some-client-id> # Client Id registered with the IDP
+            client-secret: <some-secret-id> # Client Secret registered with the IDP
+            authorization-grant-type: authorization_code # Supported Authorization Grant Type as configured on the IDP
+            redirect-uri: http://localhost:${server.port}/login/oauth2/code/{registrationId}
+            scope: openid,profile,email,offline_access # Add additional scopes as needed
+          pingIdentity: # Register a new IDP Registration, need to use the same name for Registration and Provider Example Ping Identity
+            idp-Name: pingIdentity # This is not a Spring OAuth2 value however required to dynamically look up the client in the application, must match registration.
+            client-name: PingIdentity # Some client name depending on the IDP this may need to match or not match IDP configuration
+            client-id: <some-client-id> # Client Id registered with the IDP
+            client-secret: <some-secret-id> # Client Secret registered with the IDP
+            authorization-grant-type: authorization_code # Supported Authorization Grant Type as configured on the IDP
+            redirect-uri: http://localhost:${server.port}/login/oauth2/code/{registrationId}
+            scope: openid,profile,email, offline_access # Add additional scopes as needed
+          pingIdentityPKCE: # Register a new IDP Registration, need to use the same name for Registration and Provider Example Ping Identity With OKCE
+            idp-Name: pingIdentityPKCE # This is not a Spring OAuth2 value however required to dynamically look up the client in the application, must match registration.
+            client-name: PingIdentityPKCE # Some client name depending on the IDP this may need to match or not match IDP configuration
+            client-id: <some-client-id> # Client Id registered with the IDP
+            authorization-grant-type: <some-secret-id> # Supported Authorization Grant Type as configured on the IDP
+            client-authentication-method: none # Supported Client Authentication Method as configured on the IDP, we do not configrue Client Secret
+            redirect-uri: http://localhost:${server.port}/login/oauth2/code/{registrationId}
+            scope: openid,profile,email,offline_access # Add additional scopes as needed
+          cognito: # Register a new IDP Registration, need to use the same name for Registration and Provider Example AWS Cognito
+            idp-Name: cognito # This is not a Spring OAuth2 value however required to dynamically look up the client in the application, must match registration.
+            client-name: AWS Cognito # Some client name depending on the IDP this may need to match or not match IDP configuration
+            client-id: <some-client-id> # Client Id registered with the IDP
+            client-secret: <some-secret-id> # Client Secret registered with the IDP
+            authorization-grant-type: authorization_code # Supported Authorization Grant Type as configured on the IDP
+            redirect-uri: http://localhost:${server.port}/login/oauth2/code/{registrationId}
+            scope: openid,profile,email,offline_access # Add additional scopes as needed
+          ibmverify:
+            idp-Name: ibmverify # This is not a Spring OAuth2 value however required to dynamically look up the client in the application, must match registration.
+            client-name: IBM Verify # Some client name depending on the IDP this may need to match or not match IDP configuration
+            client-id: <some-secret-id> # Client Id registered with the IDP
+            client-secret: <some-secret-id> # Client Secret registered with the IDP
+            authorization-grant-type: authorization_code # Supported Authorization Grant Type as configured on the IDP
+            redirect-uri: http://localhost:${server.port}/login/oauth2/code/{registrationId}
+            scope: openid,profile,email,offline_access # Add additional scopes as needed
+        provider:
+          google: # Register a new IDP Provider, need to use the same name for Registration and Provider, Example Google
+            authorization-uri: https://accounts.google.com/o/oauth2/v2/auth # Authorization URI per IDP
+            token-uri: https://oauth2.googleapis.com/token # Token URI per IDP
+            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo # User Info URI per IDP
+          azure: # Register a new IDP Provider, need to use the same name for Registration and Provider, Example Azure
+            authorization-uri: https://login.microsoftonline.com/<some-tenant-id>/oauth2/v2.0/authorize # Authorization URI per IDP
+            token-uri: https://login.microsoftonline.com/<some-tenant-id>/oauth2/v2.0/token # Token URI per IDP
+            user-info-uri: https://graph.microsoft.com/oidc/userinfo # User Info URI per IDP
+            jwk-set-uri: https://login.microsoftonline.com/<some-tenant-id>/discovery/v2.0/keys # JWK URI per IDP
+            user-name-attribute: <some-username-attribute-id> # UserName attribute as configured on the IDP User Attribute Mappings
+          pingIdentity: # Register a new IDP Provider, need to use the same name for Registration and Provider, Example Ping Identity
+            authorization-uri: https://auth.pingone.ca/<some-tenant-id>/as/authorize # Authorization URI per IDP
+            token-uri: https://auth.pingone.ca/<some-tenant-id>/as/token # Token URI per IDP
+            user-info-uri: https://auth.pingone.ca/<some-tenant-id>/as/userinfo # User Info URI per IDP
+            jwk-set-uri: https://auth.pingone.ca/<some-tenant-id>/as/jwks # JWK URI per IDP
+            user-name-attribute: <some-username-attribute-id> # UserName attribute as configured on the IDP User Attribute Mappings
+          pingIdentityPKCE: # Register a new IDP Provider, need to use the same name for Registration and Provider, Example Ping Identity with PKCE
+            authorization-uri: https://auth.pingone.ca/<some-tenant-id>/as/authorize # Authorization URI per IDP
+            token-uri: https://auth.pingone.ca/<some-tenant-id>/as/token # Token URI per IDP
+            user-info-uri: https://auth.pingone.ca/<some-tenant-id>/as/userinfo # User Info URI per IDP
+            jwk-set-uri: https://auth.pingone.ca/<some-tenant-id>/as/jwks # JWK URI per IDP
+            user-name-attribute: <some-username-attribute-id> # UserName attribute as configured on the IDP User Attribute Mappings
+          cognito: # Register a new IDP Provider, need to use the same name for Registration and Provider, Example AWS Cognito
+            authorization-uri: https://<some-tenant-id>-identity.auth.us-west-1.amazoncognito.com/oauth2/authorize # Authorization URI per IDP
+            token-uri: https://<some-tenant-id>-identity.auth.us-west-1.amazoncognito.com/oauth2/token # Token URI per IDP
+            user-info-uri: https://<some-tenant-id>-identity.auth.us-west-1.amazoncognito.com/oauth2/userInfo # User Info URI per IDP
+            jwk-set-uri: https://cognito-idp.us-west-1.amazonaws.com/us-west-1_<some-tenant-id>/.well-known/jwks.json # JWK URI per IDP
+            user-name-attribute: <some-username-attribute-id> # UserName attribute as configured on the IDP User Attribute Mappings
+          ibmverify: # Register a new IDP Provider, need to use the same name for Registration and Provider, Example IBM Security Verify
+            authorization-uri: https://<some-tenant-id>/v1.0/endpoint/default/authorize # Authorization URI per IDP
+            token-uri: https://<some-tenant-id>/v1.0/endpoint/default/token # Token URI per IDP
+            user-info-uri: https://<some-tenant-id>/v1.0/endpoint/default/userinfo # User Info URI per IDP
+            jwk-set-uri: https://<some-tenant-id>/v1.0/endpoint/default/jwks # JWK URI per IDP
+            user-name-attribute: <some-username-attribute-id> # UserName attribute as configured on the IDP User Attribute Mappings
