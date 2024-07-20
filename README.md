@@ -199,19 +199,21 @@ The oidc-check application is a Java 17 based SpringBoot application made up of 
 
    ![OIDC Configuration 1](./readme_assets/oidc_config_1.png)
 
+   The redirect-url must me configured on the IPD provider, please replace the {registrationid} variable with the id of the confogired Identity Provider.
+
    ![OIDC Configuration 2](./readme_assets/oidc_config_2.png)
 
 
-3. Run the oidc-check application
+4. Run the oidc-check application
 
    ![OIDC Run 1](./readme_assets/oidc_run_1.png)
 
 
-4. Select an OIDC Provider and complete OIDC Flow   
+5. Select an OIDC Provider and complete OIDC Flow, the URL is http://localhost:8080/oidc-login or a different port if one is configured.   
     ![OIDC Run 2](./readme_assets/oidc_run_2.png)
 
 
-5. Attributes that come back from the OIDC Provider including access tokens and refresh tokens are displayed.
+6. Attributes that come back from the OIDC Provider including access tokens and refresh tokens are displayed.
    ![OIDC Run 3](./readme_assets/oidc_run_3.png)
 
 The above application run consisted of multiple IDP configurations in the application.yaml file, one can add new ones as needed to the application.yaml by updating as follows
