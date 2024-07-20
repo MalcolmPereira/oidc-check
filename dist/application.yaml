@@ -1,0 +1,25 @@
+#file: noinspection SpellCheckingInspection
+#Very Important to adhere to YAML form and not break the YML file, best to edit this in an editor that supports YAML editting.
+server:
+  port: 8080 # Configure Port as needed default is 8080
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          <some-idp>: # Register a new IDP Registration, need to use the same name for Registration and Provider
+            idp-Name: <some-idp> # This is not a Spring OAuth2 value however required to dynamically look up the client in the application, must match registration.
+            client-name: <some-client-name> # Some client name depending on the IDP this may need to match or not match IDP configuration
+            client-id: <some-client-id> # Client Id registered with the IDP
+            client-secret: <some-secret-id> # Client Secret registered with the IDP
+            authorization-grant-type: authorization_code # Supported Authorization Grant Type as configured on the IDP
+            client-authentication-method: <some-value> # Supported Client Authentication Method as configured on the IDP
+            redirect-uri: http://localhost:${server.port}/login/oauth2/code/{registrationId}
+            scope: openid,profile,email,offline_access # Add additional scopes as needed
+        provider:
+          <some-idp>: # Register a new IDP Provider, need to use the same name for Registration and Provider
+            authorization-uri: https://<idp.auth.uri>/<some-tenant-id>/oauth2/v2.0/authorize # Authorization URI per IDP
+            token-uri: https://<idp.token.uri>/<some-tenant-id>/oauth2/v2.0/token # Token URI per IDP
+            user-info-uri: https://<idp.user.info.uri>/oidc/userinfo # User Info URI per IDP
+            jwk-set-uri: https://<idp.jwk.uri/<some-tenant-id>/discovery/v2.0/keys # JWK URI per IDP
+            user-name-attribute: <some-username-attribute-id> # UserName attribute as configured on the IDP User Attribute Mappings
