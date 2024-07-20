@@ -1,7 +1,7 @@
 #file: noinspection SpellCheckingInspection
 #Very Important to adhere to YAML form and not break the YML file, best to edit this in an editor that supports YAML editting.
 server:
-  port: 8080 # Configure Port as needed default is 8080
+  port: 8080 # Configure Port as needed default is 8080, make sure you update the redirect url on the IDP to matach the same port.
 spring:
   security:
     oauth2:
@@ -12,7 +12,8 @@ spring:
             client-name: Google # Some client name depending on the IDP this may need to match or not match IDP configuration
             client-id: <some-client-id> # Client Id registered with the IDP
             client-secret: <some-secret-id> # Client Secret registered with the IDP
-            redirect-uri: http://localhost:${server.port}/login/oauth2/code/{registrationId}
+            redirect-uri: http://localhost:${server.port}/login/oauth2/code/{registrationId} # Please configure the Redirect URI on the IDP.
+            #Example if id is set to google, then the redirect URI that is registered on the Identity Provider would be http://localhost:8080/login/oauth2/code/google
             scope: openid,profile,email,offline_access # Add additional scopes as needed
           azure: # Register a new IDP Registration, need to use the same name for Registration and Provider Example Azure
             idp-Name: azure # This is not a Spring OAuth2 value however required to dynamically look up the client in the application, must match registration.
@@ -20,7 +21,8 @@ spring:
             client-id: <some-client-id> # Client Id registered with the IDP
             client-secret: <some-secret-id> # Client Secret registered with the IDP
             authorization-grant-type: authorization_code # Supported Authorization Grant Type as configured on the IDP
-            redirect-uri: http://localhost:${server.port}/login/oauth2/code/{registrationId}
+            redirect-uri: http://localhost:${server.port}/login/oauth2/code/{registrationId} # Please configure the Redirect URI on the IDP.
+            #Example if id is set to azure, then the redirect URI that is registered on the Identity Provider would be http://localhost:8080/login/oauth2/code/azure
             scope: openid,profile,email,offline_access # Add additional scopes as needed
           pingIdentity: # Register a new IDP Registration, need to use the same name for Registration and Provider Example Ping Identity
             idp-Name: pingIdentity # This is not a Spring OAuth2 value however required to dynamically look up the client in the application, must match registration.
@@ -28,7 +30,8 @@ spring:
             client-id: <some-client-id> # Client Id registered with the IDP
             client-secret: <some-secret-id> # Client Secret registered with the IDP
             authorization-grant-type: authorization_code # Supported Authorization Grant Type as configured on the IDP
-            redirect-uri: http://localhost:${server.port}/login/oauth2/code/{registrationId}
+            redirect-uri: http://localhost:${server.port}/login/oauth2/code/{registrationId} # Please configure the Redirect URI on the IDP.
+            #Example if id is set to pingIdentity, then the redirect URI that is registered on the Identity Provider would be http://localhost:8080/login/oauth2/code/pingIdentity
             scope: openid,profile,email, offline_access # Add additional scopes as needed
           pingIdentityPKCE: # Register a new IDP Registration, need to use the same name for Registration and Provider Example Ping Identity With OKCE
             idp-Name: pingIdentityPKCE # This is not a Spring OAuth2 value however required to dynamically look up the client in the application, must match registration.
@@ -36,7 +39,8 @@ spring:
             client-id: <some-client-id> # Client Id registered with the IDP
             authorization-grant-type: <some-secret-id> # Supported Authorization Grant Type as configured on the IDP
             client-authentication-method: none # Supported Client Authentication Method as configured on the IDP, we do not configrue Client Secret
-            redirect-uri: http://localhost:${server.port}/login/oauth2/code/{registrationId}
+            redirect-uri: http://localhost:${server.port}/login/oauth2/code/{registrationId} # Please configure the Redirect URI on the IDP.
+            #Example if id is set to pingIdentityPKCE, then the redirect URI that is registered on the Identity Provider would be http://localhost:8080/login/oauth2/code/pingIdentityPKCE
             scope: openid,profile,email,offline_access # Add additional scopes as needed
           cognito: # Register a new IDP Registration, need to use the same name for Registration and Provider Example AWS Cognito
             idp-Name: cognito # This is not a Spring OAuth2 value however required to dynamically look up the client in the application, must match registration.
@@ -44,7 +48,8 @@ spring:
             client-id: <some-client-id> # Client Id registered with the IDP
             client-secret: <some-secret-id> # Client Secret registered with the IDP
             authorization-grant-type: authorization_code # Supported Authorization Grant Type as configured on the IDP
-            redirect-uri: http://localhost:${server.port}/login/oauth2/code/{registrationId}
+            redirect-uri: http://localhost:${server.port}/login/oauth2/code/{registrationId} # Please configure the Redirect URI on the IDP.
+            #Example if id is set to cognito, then the redirect URI that is registered on the Identity Provider would be http://localhost:8080/login/oauth2/code/cognito
             scope: openid,profile,email,offline_access # Add additional scopes as needed
           ibmverify:
             idp-Name: ibmverify # This is not a Spring OAuth2 value however required to dynamically look up the client in the application, must match registration.
@@ -52,7 +57,8 @@ spring:
             client-id: <some-secret-id> # Client Id registered with the IDP
             client-secret: <some-secret-id> # Client Secret registered with the IDP
             authorization-grant-type: authorization_code # Supported Authorization Grant Type as configured on the IDP
-            redirect-uri: http://localhost:${server.port}/login/oauth2/code/{registrationId}
+            redirect-uri: http://localhost:${server.port}/login/oauth2/code/{registrationId} # Please configure the Redirect URI on the IDP.
+            #Example if id is set to ibmverify, then the redirect URI that is registered on the Identity Provider would be http://localhost:8080/login/oauth2/code/ibmverify
             scope: openid,profile,email,offline_access # Add additional scopes as needed
         provider:
           google: # Register a new IDP Provider, need to use the same name for Registration and Provider, Example Google
