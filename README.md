@@ -2,7 +2,7 @@
 
 A walkthrough on Open ID Connect and an implementation via Spring Security OAuth2 Client to quickly validate any Open ID Connect configurations.
 
-Code: <TODO>
+Code: [OIDC Check Application] (https://github.com/MalcolmPereira/oidc-check)
 
 ## What is Open ID Connect ?
 
