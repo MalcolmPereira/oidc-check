@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -66,6 +67,10 @@ public class OIDCRestController {
 				stringBuilder.append("Refresh Token Expires At: ").append(client.getRefreshToken().getExpiresAt()).append("<br/>");
             }
 		}
+
+		stringBuilder.append("Test Date: ").append(new Date()).append("<br/>");
+
+
 		return stringBuilder.toString();
 	}
 }
